@@ -58,7 +58,7 @@ dfPerSubCatmax=dfmaxProfit.groupby(['Sub-Category']).mean().sort_values(by="Disc
 
 #Dash
 app = dash.Dash(__name__ , meta_tags=[{"name": "viewport", "content": "width=device-width"}],external_stylesheets=[dbc.themes.BOOTSTRAP])
-
+server = app.server
 #Define figures here
 Fig = make_subplots(rows=2, cols=2, shared_xaxes=False,row_heights=[3.5,0.6],
                     specs=[[{'type': 'xy'},    {'type': 'scene'}],
