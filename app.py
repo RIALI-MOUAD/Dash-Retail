@@ -27,7 +27,7 @@ min3Profit=np.array(["Arizona"])
 min4Profit=np.array(["Florida","Oregon"])
 maxProfit=np.array(["New York","Washington","California"])
 # Connect to database or data source here
-df = pd.read_csv('SampleSuperstore.csv')
+df = pd.read_csv('https://github.com/RIALI-MOUAD/Dash-Retail/blob/main/SampleSuperstore.csv')
 dfcorr = df.corr()
 dfPerStateMean=df.groupby(['State']).mean().drop("Postal Code",axis=1)
 dfPerState=df.groupby(['State']).sum().drop("Postal Code",axis=1)
