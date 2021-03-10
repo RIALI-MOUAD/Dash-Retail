@@ -11,8 +11,20 @@ import plotly.graph_objects as go
 import plotly.express as px
 from plotly.subplots import make_subplots
 import pandas as pd
+from flask import Flask
 import dash_table
 import numpy as np
+
+
+
+
+
+#Dash
+
+server = Flask(__name__)
+server.secret_key = os.environ.get('secret_key', 'secret')
+app = dash.Dash(__name__ , meta_tags=[{"name": "viewport", "content": "width=device-width"}],external_stylesheets=[dbc.themes.BOOTSTRAP],server=server)
+app.config.supress_callback_exceptions = True
 
 #dataframe
 def df_to_plotly(df):
@@ -56,9 +68,7 @@ dfPerSubCat0=df.groupby(['Sub-Category']).mean().sort_values(by="Discount")
 dfPerSubCatmin=dfminProfit0.groupby(['Sub-Category']).mean().sort_values(by="Discount")
 dfPerSubCatmax=dfmaxProfit.groupby(['Sub-Category']).mean().sort_values(by="Discount")
 
-#Dash
-app = dash.Dash(__name__ , meta_tags=[{"name": "viewport", "content": "width=device-width"}],external_stylesheets=[dbc.themes.BOOTSTRAP])
-server = app.server
+
 #Define figures here
 Fig = make_subplots(rows=2, cols=2, shared_xaxes=False,row_heights=[3.5,0.6],
                     specs=[[{'type': 'xy'},    {'type': 'scene'}],
