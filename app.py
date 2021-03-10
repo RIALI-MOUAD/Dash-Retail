@@ -22,9 +22,8 @@ import numpy as np
 #Dash
 
 server = Flask(__name__)
-server.secret_key = os.environ.get('secret_key', 'secret')
 app = dash.Dash(__name__ , meta_tags=[{"name": "viewport", "content": "width=device-width"}],external_stylesheets=[dbc.themes.BOOTSTRAP],server=server)
-app.config.supress_callback_exceptions = True
+#app.config.supress_callback_exceptions = True
 
 #dataframe
 def df_to_plotly(df):
@@ -39,7 +38,7 @@ min3Profit=np.array(["Arizona"])
 min4Profit=np.array(["Florida","Oregon"])
 maxProfit=np.array(["New York","Washington","California"])
 # Connect to database or data source here
-df = pd.read_csv('https://github.com/RIALI-MOUAD/Dash-Retail/blob/main/SampleSuperstore.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/RIALI-MOUAD/Dash-Retail/main/SampleSuperstore.csv')
 dfcorr = df.corr()
 dfPerStateMean=df.groupby(['State']).mean().drop("Postal Code",axis=1)
 dfPerState=df.groupby(['State']).sum().drop("Postal Code",axis=1)
